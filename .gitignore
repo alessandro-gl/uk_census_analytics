@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# dbt
+target/
+dbt_packages/
+logs/
+*.log
+
+# Credentials (CRITICAL!)
+profiles.yml
+*credentials*.json
+*service-account*.json
+*.json
+!ons_words.json
+
+# Data files
+data/
+*.csv
+*.parquet
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Google Cloud
+.google/
+.gcloud/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# OS
+Thumbs.db
+
+# Other folders
+old/
