@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: census_raw
+    description: Raw UK Census data from ONS API
+    database: uk-census-portfolio
+    schema: raw_data
+    tables:
+      - name: ons_census_raw
+        description: Raw census data table
+        columns:
+          - name: geography_code
+            description: Geographic area code
