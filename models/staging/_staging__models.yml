@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_census__observations
+    description: Cleaned census observations with standardized column names
+    columns:
+      - name: geography_code
+        description: Unique geographic area identifier
+        tests:
+          - not_null
+      
+      - name: metric_name
+        description: Name of the measured variable
+        tests:
+          - not_null
+      
+      - name: value
+        description: Observed value for the metric
+        tests:
+          - not_null
+
+  - name: stg_census__geography
+    description: Unique geographic areas (Westminster Parliamentary constituencies)
+    columns:
+      - name: geography_code
+        description: Unique constituency identifier
+        tests:
+          - unique
+          - not_null
+      
+      - name: geography_name
+        description: Constituency name
+        tests:
+          - not_null

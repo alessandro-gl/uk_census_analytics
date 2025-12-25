@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: int_demographics__pivoted
+    description: Demographic metrics pivoted from long to wide format for 7 campaign-relevant dimensions
+    columns:
+      - name: geography_code
+        description: Unique constituency identifier
+        tests:
+          - unique
+          - not_null
+      
+      - name: geography_name
+        description: Constituency name
+        tests:
+          - not_null
+      
+      - name: pop_female
+        description: Female population count
+        tests:
+          - not_null
+      
+      - name: pop_male
+        description: Male population count
+        tests:
+          - not_null
