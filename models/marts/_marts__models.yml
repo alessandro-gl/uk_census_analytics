@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: dim_geography
+    description: Geographic dimension table for Westminster Parliamentary constituencies
+    columns:
+      - name: geography_code
+        description: Primary key - unique constituency identifier
+        tests:
+          - unique
+          - not_null
+      
+      - name: geography_name
+        description: Constituency name
+        tests:
+          - not_null
+      
+      - name: geography_type
+        description: Geographic type (Westminster Parliamentary Constituency)
+        tests:
+          - not_null
+
+  - name: fct_voter_demographics
+    description: |
+      Voter demographic fact table with raw counts and calculated percentages
+      for political campaign targeting analysis. Includes 7 key dimensions:
+      age, sex, ethnicity, economic status, education, religion, national identity.
+    columns:
+      - name: geography_code
+        description: Foreign key to dim_geography
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_geography')
+              field: geography_code
+      
+      - name: total_population
+        description: Total population (male + female)
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      
+      - name: pct_youth_vote
+        description: Percentage of population aged 18-34 (key voting demographic)
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "between 0 and 100"
+      
+      - name: diversity_index
+        description: Diversity measure (proportion of ethnic minorities)
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "between 0 and 1"
