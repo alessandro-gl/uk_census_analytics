@@ -3,10 +3,10 @@ version: 2
 sources:
   - name: census_raw
     description: Raw UK Census data from ONS API
-    database: uk-census-portfolio
-    schema: raw_data
+    database: uk-census-portfolio # BigQuery project id
+    schema: raw_data # BigQuery dataset name
     tables:
-      - name: ons_census_raw
+      - name: ons_census_raw  # BigQuery table name
         description: Raw census data table
         columns:
           - name: geography_code
