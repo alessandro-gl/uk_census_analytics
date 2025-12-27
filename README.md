@@ -4,10 +4,12 @@ dbt project transforming UK Census 2021 data into analysis-ready datasets for de
 
 ## 📊 Project Overview
 
-This project applies analytics engineering best practices—layered modeling, automated testing, and documentation—to transform Census 2021 data in BigQuery.
+This project builds a multi-layered dbt pipeline on Census 2021 data, using dimensional modeling (staging → intermediate → marts) with automated testing and documentation.
 
-**Key capabilities:**
-- Dimensional modeling with staging, intermediate, and marts layers
+**The pipeline includes:**
+- 2 staging models (cleaned source data)
+- 1 intermediate model (demographic calculations)
+- 2 marts (final analytics tables)
 - 23 automated data quality tests
 - Interactive documentation with lineage tracking
 - CI/CD deployment with dbt Cloud
@@ -37,14 +39,14 @@ models/
 
 ![dbt lineage graph](images/dbt-dag.png)
 
-The DAG shows data flow from raw source through staging, intermediate, and marts layers.
+The DAG shows the full data flow from raw source through staging and intermediate layers to final marts.
 
 ## ✅ Data Quality
 
-- 23 automated data quality tests
-- Uniqueness, not-null, and referential integrity checks
-- Expression-based validation (e.g., percentages between 0-100)
-- Tests run automatically on every deployment
+23 automated tests covering:
+- Uniqueness and referential integrity
+- Null value constraints
+- Range validation (percentages, diversity indices)
 
 ## 📖 Documentation
 
