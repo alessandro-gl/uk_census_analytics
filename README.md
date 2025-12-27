@@ -1,23 +1,59 @@
 # UK Census 2021 Analytics
 
-End-to-end data pipeline analyzing UK Census 2021 demographic data.
+dbt project transforming UK Census 2021 data into analysis-ready datasets for demographic insights.
 
-## 🚧 Status
+## 📊 Project Overview
 
-Work in Progress
+This project applies analytics engineering best practices—layered modeling, automated testing, and documentation—to transform Census 2021 data in BigQuery.
 
-- ✅ Data extraction from ONS API to BigQuery
-- 🔄 dbt staging layer
-- 🔄 Building transformations
+**Key capabilities:**
+- Dimensional modeling with staging, intermediate, and marts layers
+- 23 automated data quality tests
+- Interactive documentation with lineage tracking
+- CI/CD deployment with dbt Cloud
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
-- **Python** - Data extraction from ONS API
-- **BigQuery** - Cloud data warehouse
-- **dbt** - Data transformation and modeling
-- **Tableau** - Data visualization (coming soon)
+- **Data Warehouse**: Google BigQuery
+- **Transformation**: dbt (data build tool)
+- **Version Control**: Git/GitHub
+- **Orchestration**: dbt Cloud
 
-## 📂 Project Structure
+## 📁 Project Structure
 
-├── data_extraction/ # ONS API extraction
-└── dbt_project/ # dbt models
+```
+models/
+├── staging/ # Raw Census data cleaned and standardized
+│ ├── stg_census__geography
+│ └── stg_census__observations
+├── intermediate/ # Demographic calculations and pivots
+│ └── int_demographics__pivoted
+└── marts/ # Final analytics-ready models
+├── dim_geography
+└── fct_voter_demographics
+```
+
+## ✅ Data Quality
+
+- 23 automated data quality tests
+- Uniqueness, not-null, and referential integrity checks
+- Expression-based validation (e.g., percentages between 0-100)
+- Tests run automatically on every deployment
+
+## 📖 Documentation
+
+Interactive documentation with model descriptions and lineage graphs:
+
+[View Documentation](https://nm855.us1.dbt.com/accounts/70471823518405/jobs/70471823543815/docs/#!/source_list/census_raw)
+
+## 🚀 How to Run
+
+```
+dbt build # Run all models and tests
+dbt docs generate # Generate documentation
+dbt test # Run data quality tests only
+```
+
+## 📝 Author
+
+Alessandro Gallo
