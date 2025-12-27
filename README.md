@@ -33,6 +33,12 @@ models/
 └── fct_voter_demographics
 ```
 
+### Data Lineage
+
+![dbt lineage graph](images/dbt-dag.png)
+
+The DAG shows data flow from raw source through staging, intermediate, and marts layers.
+
 ## ✅ Data Quality
 
 - 23 automated data quality tests
