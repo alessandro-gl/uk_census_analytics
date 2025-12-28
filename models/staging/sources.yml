@@ -3,11 +3,26 @@ version: 2
 sources:
   - name: census_raw
     description: Raw UK Census data from ONS API
-    database: uk-census-portfolio # BigQuery project id
-    schema: raw_data # BigQuery dataset name
+    database: uk-census-portfolio  # BigQuery project ID
+    schema: raw_data  # BigQuery dataset name
+    
     tables:
-      - name: ons_census_raw  # BigQuery table name
-        description: Raw census data table
-        columns:
+      - name: ons_census_raw
+        description: Raw UK Census 2021 data from ONS API
+        columns: # Column documentation
           - name: geography_code
             description: Geographic area code
+          - name: geography_name
+            description: Geographic area name
+          - name: observation
+            description: Census observation value
+      
+      - name: geography_boundaries_2021
+        description: Westminster Parliamentary Constituency boundaries (Dec 2021) for mapping
+        columns:
+          - name: pcon21cd
+            description: Westminster Parliamentary Constituency code
+          - name: pcon21nm
+            description: Westminster Parliamentary Constituency name
+          - name: geometry_wkt
+            description: Geographic boundary polygon in WKT format

@@ -1,8 +1,11 @@
 version: 2
 
+# Mart model documentation
+# Marts contain business-ready dimensional models for analytics
+
 models:
   - name: dim_geography
-    description: Geographic dimension table for Westminster Parliamentary constituencies
+    description: Geographic dimension table for Westminster Parliamentary constituencies with boundary data for mapping
     columns:
       - name: geography_code
         description: Primary key - unique constituency identifier
@@ -15,10 +18,24 @@ models:
         tests:
           - not_null
       
+      - name: geography_type_id
+        description: Numeric identifier for geography type
+      
       - name: geography_type
         description: Geographic type (Westminster Parliamentary Constituency)
         tests:
           - not_null
+      
+      - name: geography_level
+        description: Hierarchy level (1=Country, 2=Region, 3=County, 4=Local Authority, 5=Ward, 6=Other)
+        tests:
+          - not_null
+      
+      - name: geometry_wkt
+        description: Geographic boundary polygon in WKT format for mapping (null if no boundary data available)
+      
+      - name: updated_at
+        description: Timestamp when record was last updated
 
   - name: fct_voter_demographics
     description: |
