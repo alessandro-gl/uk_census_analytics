@@ -78,13 +78,11 @@ enriched as (
 final as (
     select
         e.*,
-        g.geography_name,      -- Add this
-        g.geography_type,
-        g.geography_level,
-        g.geometry_wkt         -- Add this for mapping!
+        g.geometry_wkt  -- Only add the boundary geometry
         
     from enriched e
     left join geography g using (geography_code)
 )
+
 
 select * from final
