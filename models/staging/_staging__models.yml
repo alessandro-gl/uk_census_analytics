@@ -1,3 +1,9 @@
+# This file documents all staging models in the staging layer.
+# Staging models clean and standardize raw data from sources.
+# We keep all staging model documentation in one file for simplicity
+# since there are only a few models. As the project grows, it could
+# be split into separate files per model if needed.
+
 version: 2
 
 models:
@@ -30,5 +36,24 @@ models:
       
       - name: geography_name
         description: Constituency name
+        tests:
+          - not_null
+
+  - name: stg_census__boundaries
+    description: Westminster Parliamentary Constituency geographic boundaries for mapping
+    columns:
+      - name: geography_code
+        description: Westminster Parliamentary Constituency code (matches dim_geography)
+        tests:
+          - unique
+          - not_null
+      
+      - name: geography_name
+        description: Westminster Parliamentary Constituency name
+        tests:
+          - not_null
+      
+      - name: geometry_wkt
+        description: Geographic boundary polygon in Well-Known Text (WKT) format
         tests:
           - not_null
