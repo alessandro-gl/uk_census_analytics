@@ -28,6 +28,7 @@ final as (
         
         -- Add boundary geometry for mapping
         boundaries.geometry_wkt,
+        ST_GEOGFROMTEXT(boundaries.geometry_wkt) as geography_polygon,
         
         current_timestamp() as updated_at
         

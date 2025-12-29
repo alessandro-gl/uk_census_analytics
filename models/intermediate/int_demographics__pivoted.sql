@@ -9,7 +9,7 @@ with observations as (
 filtered as (
     select 
         geography_code,
-        geography_name,
+        --geography_name,
         metric_type,
         metric_name,
         value
@@ -30,7 +30,7 @@ filtered as (
 pivoted as (
     select
         geography_code,
-        geography_name,
+        --geography_name,
         
         -- Age brackets (voting-relevant cohorts)
         -- Only process age metrics to avoid casting errors
@@ -127,7 +127,7 @@ pivoted as (
         sum(case when metric_name like 'Other identity%' then value else 0 end) as pop_identity_other
         
     from filtered
-    group by geography_code, geography_name
+    group by geography_code--, geography_name
 )
 
 select * from pivoted
