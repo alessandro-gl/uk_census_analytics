@@ -10,10 +10,10 @@ models:
           - unique
           - not_null
       
-      - name: geography_name
-        description: Constituency name
-        tests:
-          - not_null
+      #- name: geography_name
+      #  description: Constituency name
+      #  tests:
+      #    - not_null
       
       - name: pop_female
         description: Female population count
